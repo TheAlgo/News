@@ -11,6 +11,6 @@ import retrofit2.http.Query;
 
 public interface RequestInterface {
 
-    @GET("v1/articles")
-    Call<NewsResponse> getJson(@Query("api_key") String apiKey);
+    @GET("articles?apiKey=" + "d7d05286211d4d84b5c92853490021bb")
+    Call<NewsResponse> getJson(@Query("source") String source, @Query("sortBy") String sortBy);
 }

@@ -35,13 +35,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         loadJSON();
     }
+
     private void loadJSON(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://newsapi.org/")
+                .baseUrl("https://newsapi.org/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RequestInterface request = retrofit.create(RequestInterface.class);
-        Call<NewsResponse> call = request.getJson(API_KEY);
+        Call<NewsResponse> call = request.getJson("reuters","top");
         call.enqueue(new Callback<NewsResponse>() {
             @Override
             public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
